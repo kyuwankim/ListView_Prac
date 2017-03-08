@@ -60,6 +60,16 @@ ListView
 }
 </code>
 </pre>
+
+
+*Adapter를 불러올 때 생성자를 설정하면서 inflater를 만들어준다*
+
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
+
+
+
 <pre>MainActivity.java
 <code>
 public class MainActivity extends AppCompatActivity {
@@ -87,3 +97,16 @@ public class MainActivity extends AppCompatActivity {
 선택위젯
 --
 안드로이드에서 특별히 여러 개의 아이템을 선택할 수 있는 위젯들을 '선택 위젯'이라고 부른다. 다른 위젯과 다르게 특별히 이름을 붙이는 이유는 사용되는 방식이 기존 위젯과는 사뭇 다르기 때문이다. 선택 위젯은 어댑터(Adapter) 패턴을 사용하므로 직접 위젯의 각 아이템에 이미지나 텍스트를 넣을 수 없을 뿐더러, 어댑터에서 만들어주는 뷰를 이용해 리스트 뷰의 한 아이템을 보여줘야한다. 
+
+**ListView의 경우 Adapter를 통해서 inflate를 하는데 화면에서 각 선택위젯이 사라질때마다 계속 재생성을 하기때문에 비효율이 발생함 이것을 막기위해 ViewHolder라는 개념이 생겼고 *RecyclerView* 에서 사용할 수 있음**
+
+
+#Recycler View
+-
+RecyclerView 위젯은 ListView의 더욱 향상되고 유연해진 버전입니다. 이 위젯은 한정된 수의 뷰를 유지함으로써 매우 효율적으로 스크롤할 수 있는 큰 데이터 집합을 표시하기 위한 컨테이너입니다. 사용자 작업 또는 네트워크 이벤트에 따라 런타임에 요소가 변경되는 데이터 컬렉션이 있는 경우 RecyclerView 위젯을 사용하세요.
+
+![RecyclerView](https://developer.android.com/training/material/images/RecyclerView.png?hl=ko)
+
+
+레이아웃 관리자는 항목 뷰를 RecyclerView 내에 배치하고 사용자에게 더 이상 보이지 않는 항목 뷰를 언제 재사용할지 결정합니다. 뷰를 재사용 (또는 재활용)하기 위해, 레이아웃 관리자는 어댑터에게 뷰의 콘텐츠를 데이터 집합의 다른 요소로 교체하도록 요청할 수 있습니다. 이런 방식으로 뷰를 재활용하면 불필요한 뷰 생성이나 리소스를 많이 소모하는 findViewById() 조회를 수행하지 않아도 되므로 성능이 개선됩니다.
+
