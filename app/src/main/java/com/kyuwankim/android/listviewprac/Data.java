@@ -1,7 +1,5 @@
 package com.kyuwankim.android.listviewprac;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -31,8 +29,6 @@ public class Data {
             User user = new User();
             user.id   = i+1;
             user.name = "홍길동 " + user.id;
-            user.age = random.nextInt(80);
-            Log.i("Random","number=" + user.age);
             datas.add(user);
         }
     }
